@@ -28,8 +28,8 @@ namespace HRSample.Controllers
         {
             _logger.LogInformation("Index action has been called.");
             var employees = _employeeService.GetAllEmployees();
-            var employeeViewModels = _mapper.Map<IEnumerable<EmployeeViewModel>>(employees);
-            return View(employeeViewModels);
+            var employeesViewModel = _mapper.Map<IEnumerable<EmployeeViewModel>>(employees);
+            return View(employeesViewModel);
         }
 
         public IActionResult Create()
@@ -41,9 +41,23 @@ namespace HRSample.Controllers
         [HttpPost]
         public IActionResult Create(Employee employee)
         {
+            _logger.LogInformation("Creation is going to be done.");
             _employeeService.CreateEmployee(employee);
 
             return View();
+        }
+
+        public IActionResult Edit(int id)
+        {
+            var employee =  _employeeService.GetEmployeeById(id);
+            if (employee == null)
+            {
+                _logger.LogError("Employee for edit not found");
+                return NotFound();
+            }
+            var employeeViewModel = _mapper.Map<IEnumerable<EmployeeViewModel>>(employee);
+
+            return PartialView("_EditPartialView", employeeViewModel);
         }
 
 

@@ -19,6 +19,12 @@ namespace HRSample.Services
             _employeeRepository.Add(employee);
         }
 
+        public Employee GetEmployeeById(int id)
+        {
+            var employee = _employeeRepository.GetById(id);
+            return employee;
+        }
+
         public List<Employee> GetAllEmployees()
         {
             return _employeeRepository.GetEmployees();

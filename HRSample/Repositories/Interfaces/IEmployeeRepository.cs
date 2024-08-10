@@ -7,5 +7,6 @@ namespace HRSample.Repositories.Interfaces
         void Add(Employee employee);
         void Update(Employee employee);
         List<Employee> GetEmployees(); 
+        Employee GetById(int id);   
     }
 }

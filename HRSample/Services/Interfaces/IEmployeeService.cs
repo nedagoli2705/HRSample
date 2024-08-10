@@ -6,5 +6,6 @@ namespace HRSample.Services.Interfaces
     {
         void CreateEmployee(Employee employee);
         List<Employee> GetAllEmployees();
+        Employee GetEmployeeById(int id);
     }
 }

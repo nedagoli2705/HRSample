@@ -24,6 +24,12 @@ namespace HRSample.Repositories
             return _context.Employees.ToList();
         }
 
+        public Employee GetById(int id)
+        {
+            return _context.Employees.SingleOrDefault(x => x.Id == id);
+        }
+
+
         public void Update(Employee employee)
         {
             _context.Update(employee);

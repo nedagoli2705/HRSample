@@ -1,0 +1,36 @@
+﻿@using HRSample.ViewModels
+@model EmployeeViewModel
+@{
+    ViewData["Title"] = "Add New Employee";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<h4>Task</h4>
+<hr />
+
+<form asp-action="Create">
+    <div class="form-group">
+        <label asp-for="FirstName" class="control-label"></label>
+        <input asp-for="FirstName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="LastName" class="control-label"></label>
+        <input asp-for="LastName" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="City" class="control-label"></label>
+        <input asp-for="City" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Zip" class="control-label"></label>
+        <input asp-for="Zip" class="form-control" />
+    </div>
+    <div class="form-group">
+        <input type="submit" value="Create" class="btn btn-primary" />
+    </div>
+</form>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

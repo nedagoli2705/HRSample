@@ -1,5 +1,10 @@
 using HRSample.Data;
+using HRSample.Repositories.Interfaces;
+using HRSample.Repositories;
 using Microsoft.EntityFrameworkCore;
+using HRSample.Services.Interfaces;
+using HRSample.Services;
+using HRSample.AutoMapperProfile;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -8,7 +13,20 @@ builder.Services.AddControllersWithViews();
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
-    
+
+builder.Logging.ClearProviders();
+builder.Logging.AddConsole(); 
+builder.Logging.AddDebug();
+
+
+builder.Services.AddScoped<IEmployeeRepository, EmployeeRepository>();
+builder.Services.AddScoped<ISalaryRepository, SalaryRepository>();
+
+builder.Services.AddScoped<IEmployeeService, EmployeeService>();
+//builder.Services.AddScoped<ISalaryService, SalaryRepository>();
+
+builder.Services.AddAutoMapper(typeof(EmployeeDepartmentProfile));
+
 
 var app = builder.Build();
 
@@ -29,6 +47,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Employee}/{action=Index}/{id?}");
 
 app.Run();

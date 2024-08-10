@@ -1,6 +1,6 @@
 ﻿namespace HRSample.Models
 {
-    public class Salaries
+    public class Salary
     {
         public int Id { get; set; }
         public int EmployeeId { get; set; }

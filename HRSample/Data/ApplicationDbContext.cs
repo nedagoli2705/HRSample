@@ -7,7 +7,7 @@ namespace HRSample.Data
     {
         public ApplicationDbContext(DbContextOptions options) : base(options) { }
 
-        public DbSet<Employees> Employees { get; set; }
-        public DbSet<Salaries> Salaries { get; set; }
+        public DbSet<Employee> Employees { get; set; }
+        public DbSet<Salary> Salaries { get; set; }
     }
 }
